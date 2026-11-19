@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code or the model, please cite the paper (preferred-citation below)."
+type: software
+title: "Perpetual Preferred Against Bitcoin Structural Credit Model"
+abstract: "Reference implementation and test vectors for the paper Perpetual Preferred Equity Against Bitcoin: A Closed-Form Structural Credit Model (Fairbanks, 2026). Three pure standard-library Python functions: the closed-form price equation, the Distance-to-Coverage-Breach (DCB), and the drift-free breach probability. The checks reproduce the four test vectors of Appendix D.5 and all 231 numeric cells of Tables 1 through 5 and Table C.1."
+authors:
+  - family-names: Fairbanks
+    given-names: Jackson
+    affiliation: "Strive, Inc."
+repository-code: "https://github.com/jacksonfairbanks/perpetual-preferred-against-bitcoin-structural-credit-model"
+url: "https://tnorth.com/research/perpetual-preferred-equity-against-bitcoin-structural-credit-model/"
+license: MIT
+version: 1.0.0
+keywords:
+  - "structural credit model"
+  - "perpetual preferred equity"
+  - "Bitcoin"
+  - "Bitcoin Coverage Years (BCY)"
+  - "Distance-to-Coverage-Breach (DCB)"
+  - "first-passage time"
+  - "Black and Cox (1976)"
+  - "credit risk"
+  - "quantitative finance"
+preferred-citation:
+  type: report
+  title: "Perpetual Preferred Equity Against Bitcoin: A Closed-Form Structural Credit Model"
+  authors:
+    - family-names: Fairbanks
+      given-names: Jackson
+      affiliation: "Strive, Inc."
+  institution:
+    name: "True North"
+  # The report number is given twice on purpose. "number" is the CFF field for it.
+  # "issue" is the field GitHub's BibTeX export reads to fill "number" in @techreport.
+  number: "TNR-2026-05"
+  issue: "TNR-2026-05"
+  year: 2026
+  url: "https://tnorth.com/research/perpetual-preferred-equity-against-bitcoin-structural-credit-model/"

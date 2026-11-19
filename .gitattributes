@@ -1,0 +1,5 @@
+# Reproducibility-first repo: do NOT translate line endings on checkout.
+# dcb_model.py matches the listing in Appendix D.4 of the paper character for
+# character, and its SHA-256 is printed in the README.
+# Treating every file as binary preserves those bytes across Windows / macOS / Linux.
+* -text

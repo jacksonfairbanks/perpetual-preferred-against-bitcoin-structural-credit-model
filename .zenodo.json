@@ -1,0 +1,19 @@
+{
+  "title": "Perpetual Preferred Against Bitcoin Structural Credit Model",
+  "upload_type": "software",
+  "license": "MIT",
+  "language": "eng",
+  "creators": [
+    {"name": "Fairbanks, Jackson", "affiliation": "Strive, Inc."}
+  ],
+  "keywords": ["structural credit model", "perpetual preferred equity",
+    "Bitcoin", "Bitcoin Coverage Years (BCY)", "Distance-to-Coverage-Breach (DCB)",
+    "first-passage time", "Black and Cox (1976)", "credit risk",
+    "quantitative finance"],
+  "related_identifiers": [
+    {"identifier": "https://tnorth.com/research/perpetual-preferred-equity-against-bitcoin-structural-credit-model/",
+     "relation": "isSupplementTo", "scheme": "url", "resource_type": "publication-report"}
+  ],
+  "notes": "If you use this repository, please cite the paper: Fairbanks (2026), Perpetual Preferred Equity Against Bitcoin: A Closed-Form Structural Credit Model. True North Research Report No. TNR-2026-05. https://tnorth.com/research/perpetual-preferred-equity-against-bitcoin-structural-credit-model/",
+  "description": "<p>Reference implementation and test vectors for the paper \"Perpetual Preferred Equity Against Bitcoin: A Closed-Form Structural Credit Model\" (Fairbanks, 2026). Paper: https://tnorth.com/research/perpetual-preferred-equity-against-bitcoin-structural-credit-model/ (True North Research Report No. TNR-2026-05).</p><p>The model prices perpetual preferred equity issued against a Bitcoin reserve as the present value of its dividend payments until the reserve first reaches a coverage barrier. It produces a closed-form price and the Distance-to-Coverage-Breach (DCB), a vol-scaled log-distance from current coverage to the barrier.</p><p>This repository holds the code of the paper's Appendix D: three pure standard-library Python functions, the four test vectors of Appendix D.5, and a check that recomputes all 231 numeric cells of Tables 1 through 5 and Table C.1. It also holds the paper as published, in PDF and Markdown.</p><p>License: MIT applies to the code. The paper files in this archive are all rights reserved and are not covered by the MIT license.</p>"
+}
