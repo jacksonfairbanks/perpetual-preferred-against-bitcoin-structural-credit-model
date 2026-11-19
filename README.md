@@ -30,7 +30,7 @@ This repository holds the paper's Appendix D as runnable files, and the paper it
 | `test_vectors.py` | The four test vectors of Appendix D.5. |
 | `verify_tables.py` | Recomputes all 231 numeric cells of Tables 1 through 5 and Table C.1. |
 | `perpetual-preferred-equity-against-bitcoin-structural-credit-model.pdf` | The paper as published, Version 1.0, 35 pages. |
-| `perpetual-preferred-equity-against-bitcoin-structural-credit-model.md` | The paper's full text in Markdown, from the author's source file. |
+| `perpetual-preferred-equity-against-bitcoin-structural-credit-model.md` | The paper's full text in Markdown, from the author's source file. Equation markup is adapted so GitHub displays it, and each equation number follows its equation. |
 | `figures/` | The paper's four figures as SVG files. The Markdown file displays them. |
 | `CITATION.cff` | Citation metadata, with the paper as the preferred citation. |
 | `LICENSE` | MIT, code only. |

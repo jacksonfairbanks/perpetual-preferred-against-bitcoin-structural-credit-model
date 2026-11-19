@@ -46,7 +46,9 @@ The reserve is measured against the preferred's future dividend payments. Let C 
 
 Bitcoin Coverage Years (BCY) is the ratio of Bitcoin reserve value to annual dividend payments:
 
-$$\mathrm{BCY}_t = V_t / C.$$
+```math
+\mathrm{BCY}_t = V_t / C.
+```
 
 The unit is years of forward coverage: BCY_t = 3 means the reserve equals three years of dividend payments.
 
@@ -78,19 +80,27 @@ This section develops the structural credit model. §3.1 sets out the asset proc
 
 The Bitcoin reserve V_t evolves as a geometric Brownian motion. Under the physical measure,
 
-$$dV_t = \mu V_t\, dt + \sigma V_t\, dW_t, \tag{3.1}$$
+```math
+dV_t = \mu V_t\, dt + \sigma V_t\, dW_t, \qquad \text{(3.1)}
+```
 
 and under the risk-neutral measure used for valuation,
 
-$$dV_t = r V_t\, dt + \sigma V_t\, dW_t^Q. \tag{3.2}$$
+```math
+dV_t = r V_t\, dt + \sigma V_t\, dW_t^Q. \qquad \text{(3.2)}
+```
 
 Here r is the continuously compounded risk-free rate, σ is the annualized asset volatility, and μ is the physical-measure drift. The coverage barrier from §2.5 is
 
-$$V_B \;=\; C \cdot 1\text{ year}, \qquad \text{equivalently the barrier sits at } \mathrm{BCY}_t = 1, \tag{3.3}$$
+```math
+V_B \;=\; C \cdot 1\text{ year}, \qquad \text{equivalently the barrier sits at } \mathrm{BCY}_t = 1, \qquad \text{(3.3)}
+```
 
 so V_B is the reserve level at which BCY = 1. Recovery on coverage breach is
 
-$$R \;=\; (1-\alpha)\, V_B, \qquad \alpha \in [0,1], \tag{3.4}$$
+```math
+R \;=\; (1-\alpha)\, V_B, \qquad \alpha \in [0,1], \qquad \text{(3.4)}
+```
 
 with α the recovery-loss fraction. The base case throughout this paper is α = 1.0, giving R = 0: at breach the holder has no claim to enforce (§3.4).
 
@@ -118,13 +128,17 @@ The breach factor integrates the entire future of breach risk into a single scal
 
 The discount exponent is
 
-$$\beta \;=\; 2r/\sigma^2. \tag{3.5}$$
+```math
+\beta \;=\; 2r/\sigma^2. \qquad \text{(3.5)}
+```
 
 The physical-measure drift μ does not enter β: pricing is conducted under the risk-neutral measure, where the reserve's drift is the discount rate r, with no continuous reserve yield (Assumptions 1 and 2). β is discounting speed over diffusion speed, 2r over σ². A higher discount rate raises it: the reserve drifts up faster and a dollar paid at breach is discounted harder, so breach is priced as more remote. Higher volatility lowers it: the reserve can reach the barrier sooner, so breach is priced as nearer.
 
 The breach factor applies β, the reserve's path to the barrier, to BCY, the distance the reserve sits from the barrier, (V_B/V_0)^β = BCY^(−β). The result is a single number from the breach-time distribution: the present value, at the discount rate, of one dollar paid at the random first time V_t touches V_B. Under the risk-neutral GBM it has the closed form
 
-$$\bigl(V_B/V_0\bigr)^{\beta} \;=\; E^Q\!\left[e^{-r\tau}\,\mathbf{1}_{\{\tau<\infty\}}\right] \tag{3.6}$$
+```math
+\bigl(V_B/V_0\bigr)^{\beta} \;=\; E^Q\!\left[e^{-r\tau}\,\mathbf{1}_{\{\tau<\infty\}}\right] \qquad \text{(3.6)}
+```
 
 (derivation in Appendix A). At the base case β = 0.352, and doubling coverage lowers the factor by about a fifth. With zero recovery, the price in §3.5 is the risk-free perpetuity C/r times one minus the factor just described, (C/r)[1 − (V_B/V_0)^β].
 
@@ -146,11 +160,15 @@ The first-passage construction makes the coverage barrier absorbing. In the mode
 
 The closed-form price of the perpetual preferred at reserve level V_0 is
 
-$$P_0 \;=\; \frac{c}{r}\!\left[1 - (V_B/V_0)^{\beta}\right] \,+\, R\, (V_B/V_0)^{\beta}, \qquad R = (1-\alpha)\,V_B. \tag{3.7}$$
+```math
+P_0 \;=\; \frac{c}{r}\!\left[1 - (V_B/V_0)^{\beta}\right] \,+\, R\, (V_B/V_0)^{\beta}, \qquad R = (1-\alpha)\,V_B. \qquad \text{(3.7)}
+```
 
 At the α = 1.0 base case, R = 0 and the equation collapses to a single term:
 
-$$P_0 \;=\; \frac{c}{r}\!\left[1 - (V_B/V_0)^{\beta}\right]. \tag{3.8}$$
+```math
+P_0 \;=\; \frac{c}{r}\!\left[1 - (V_B/V_0)^{\beta}\right]. \qquad \text{(3.8)}
+```
 
 Quantities are stated per $100 of face value. Here c is in dollars rather than a rate, so a 10% dividend gives c = 10 and C = c (§2.3). Equivalently, (3.7) can be written in BCY_0 directly via V_B/V_0 = 1/BCY_0.
 
@@ -170,7 +188,9 @@ For comparability with corporate credit, the running yield is c/P_0 and the yiel
 
 The price equation in §3.5 is the model's first output. The model's second output is a single scalar: the Distance-to-Coverage-Breach (DCB), defined as
 
-$$\mathrm{DCB} \;=\; \frac{\ln(\mathrm{BCY}_0)}{\sigma\,\sqrt{T}}. \tag{3.9}$$
+```math
+\mathrm{DCB} \;=\; \frac{\ln(\mathrm{BCY}_0)}{\sigma\,\sqrt{T}}. \qquad \text{(3.9)}
+```
 
 By construction, DCB is invariant to the discount rate and the recovery assumption: both enter the price, neither enters the distance. DCB requires no position on either in order to monitor coverage, compare instruments, or report across entities and horizons.
 
@@ -355,21 +375,29 @@ That channel is empty here. Recovery is zero (§3.4): the contract provides no c
 
 Let the stack comprise tranches i = 1, …, n ordered from most senior (i = 1) to most junior (i = n), with annualized dividend payments c_i on the §3.5 dollar convention and total C = Σᵢ c_i. The reserve process, the pricing measure, and β = 2r/σ² are those of §3.1–§3.2. One reserve carries the whole stack. Define the cumulative dividend load of tranche i as the dividends payable to it and to everything senior to it,
 
-$$D_i \;=\; \sum_{j \le i} c_j, \tag{5.1}$$
+```math
+D_i \;=\; \sum_{j \le i} c_j, \qquad \text{(5.1)}
+```
 
 and place each tranche's barrier at one forward year of its cumulative load,
 
-$$K_i \;=\; \kappa\, D_i, \qquad \kappa = 1\ \text{year}, \tag{5.2}$$
+```math
+K_i \;=\; \kappa\, D_i, \qquad \kappa = 1\ \text{year}, \qquad \text{(5.2)}
+```
 
 matching the convention of §2.5, under which the whole-stack barrier is one forward year of the whole-stack dividend payments. Coverage per tranche is BCY_i = V_0 / K_i. Because the barriers are ordered, K_1 < K_2 < … < K_n, and the reserve path is continuous, the breach times are nested pathwise:
 
-$$\tau_n \;\le\; \tau_{n-1} \;\le\; \dots \;\le\; \tau_1. \tag{5.3}$$
+```math
+\tau_n \;\le\; \tau_{n-1} \;\le\; \dots \;\le\; \tau_1. \qquad \text{(5.3)}
+```
 
 A falling reserve breaches junior barriers first. The cumulative form implements junior-first shedding: tranche i's dividend continues while the reserve covers the load through tranche i, and is shed only after every dividend junior to it has been shed.
 
 Each tranche then prices on the existing curve at its own coverage. At the zero-recovery base case (3.8),
 
-$$P_i \;=\; \frac{c_i}{r}\left[1 - q_i\right], \qquad q_i \;=\; \left(\frac{K_i}{V_0}\right)^{\beta} = \mathrm{BCY}_i^{-\beta}. \tag{5.4}$$
+```math
+P_i \;=\; \frac{c_i}{r}\left[1 - q_i\right], \qquad q_i \;=\; \left(\frac{K_i}{V_0}\right)^{\beta} = \mathrm{BCY}_i^{-\beta}. \qquad \text{(5.4)}
+```
 
 The extension is a placement rule, not a new model: n points on the one structural curve of §3.5, indexed by cumulative coverage. At n = 1 the construction returns the single-tranche model exactly, and the cumulative dividend barrier coincides with the coverage barrier of §2.5. Both outputs extend tranche-wise: each tranche carries its own price P_i from (5.4) and its own breach distance DCB_i = ln(BCY_i)/(σ√T) from (3.9). The construction is stated for the pure-play scope of §2.6, in which the issuer makes no payments other than the preferred stack's dividends. Capital structures carrying debt fall outside that scope. Their treatment is not developed here.
 
@@ -379,7 +407,9 @@ Proposition 1 (senior value exceeds pro rata). Define the composite value as the
 
 Proposition 2 (seniority value in closed form). The value created by ordered survival relative to the undifferentiated composite is
 
-$$\sum_i P_i \;-\; P_{\mathrm{comp}} \;=\; \frac{1}{r}\sum_i c_i\,\big(q_n - q_i\big) \;\ge\; 0, \tag{5.5}$$
+```math
+\sum_i P_i \;-\; P_{\mathrm{comp}} \;=\; \frac{1}{r}\sum_i c_i\,\big(q_n - q_i\big) \;\ge\; 0, \qquad \text{(5.5)}
+```
 
 strict for any stack of n ≥ 2 tranches with positive dividend payments. Proof: Σᵢ (c_i/r)(1 − q_i) − (C/r)(1 − q_n) = (1/r)[C·q_n − Σᵢ c_i q_i] = (1/r)Σᵢ c_i (q_n − q_i) ≥ 0, since C = Σᵢ c_i and q_n ≥ q_i (the composite barrier is the highest in the stack, hence reached first). ∎ Seniority value is a closed-form quantity in this framework, not a notching adjustment applied after the fact.
 
@@ -469,41 +499,57 @@ This appendix derives two results used in §3 but not derived in the main text: 
 
 The asset process is geometric Brownian motion:
 
-$$V_t = V_0 \exp\!\left((\nu - \tfrac{1}{2}\sigma^2)t + \sigma W_t\right), \tag{A.1}$$
+```math
+V_t = V_0 \exp\!\left((\nu - \tfrac{1}{2}\sigma^2)t + \sigma W_t\right), \qquad \text{(A.1)}
+```
 
 where W_t is a standard Brownian motion and ν is the drift parameter. Under the risk-neutral measure Q used for valuation, ν = r (Assumption 1 of §3.1, with no continuous reserve yield by Assumption 2). Under the physical measure P, ν = μ.
 
 The first-passage time of V to the coverage barrier V_B is
 
-$$\tau = \inf\{t \ge 0 : V_t \le V_B\}, \qquad V_0 > V_B. \tag{A.2}$$
+```math
+\tau = \inf\{t \ge 0 : V_t \le V_B\}, \qquad V_0 > V_B. \qquad \text{(A.2)}
+```
 
 At V_0 = V_B the barrier is reached at τ = 0 and the breach factor is one, the degenerate point of §3.5. The derivation takes V_0 > V_B.
 
 For analytical tractability the derivation works in log-asset coordinates. Define
 
-$$X_t = \ln(V_t/V_B), \qquad X_0 = \ln(\mathrm{BCY}_0) > 0. \tag{A.3}$$
+```math
+X_t = \ln(V_t/V_B), \qquad X_0 = \ln(\mathrm{BCY}_0) > 0. \qquad \text{(A.3)}
+```
 
 X_t is Brownian motion with drift v and diffusion σ:
 
-$$dX_t = v\, dt + \sigma\, dW_t, \qquad v = \nu - \tfrac{1}{2}\sigma^2. \tag{A.4}$$
+```math
+dX_t = v\, dt + \sigma\, dW_t, \qquad v = \nu - \tfrac{1}{2}\sigma^2. \qquad \text{(A.4)}
+```
 
 The first-passage time τ is equivalently the first hitting time of zero by X:
 
-$$\tau = \inf\{t \ge 0 : X_t \le 0\}. \tag{A.5}$$
+```math
+\tau = \inf\{t \ge 0 : X_t \le 0\}. \qquad \text{(A.5)}
+```
 
 ### A.2 Laplace transform via exponential martingale
 
 The target is E^Q[exp(−rτ)] under the risk-neutral measure (ν = r, v = r − σ²/2). Construct the exponential martingale
 
-$$M_t = \exp\!\left(\lambda X_t - \varphi(\lambda) t\right), \qquad \varphi(\lambda) = v\lambda + \tfrac{1}{2}\sigma^2\lambda^2. \tag{A.6}$$
+```math
+M_t = \exp\!\left(\lambda X_t - \varphi(\lambda) t\right), \qquad \varphi(\lambda) = v\lambda + \tfrac{1}{2}\sigma^2\lambda^2. \qquad \text{(A.6)}
+```
 
 By Itô's formula, M_t is a local martingale for any λ, with Laplace exponent φ(λ). To make the discount factor coincide with the risk-free rate r, set φ(λ) = r:
 
-$$\tfrac{1}{2}\sigma^2 \lambda^2 + v\lambda - r = 0. \tag{A.7}$$
+```math
+\tfrac{1}{2}\sigma^2 \lambda^2 + v\lambda - r = 0. \qquad \text{(A.7)}
+```
 
 With v = r − σ²/2 under Q, the discriminant of (A.7) simplifies to (r + σ²/2)², and the two roots are
 
-$$\lambda_+ = 1, \qquad \lambda_- = -\frac{2r}{\sigma^2} = -\beta, \tag{A.8}$$
+```math
+\lambda_+ = 1, \qquad \lambda_- = -\frac{2r}{\sigma^2} = -\beta, \qquad \text{(A.8)}
+```
 
 with β = 2r/σ² as defined in §3.3 eq. (3.5). The two roots are the same characteristic exponents that appear in the Black and Cox (1976, eq. 14) general solution to the time-homogeneous ODE.
 
@@ -511,15 +557,21 @@ Take the negative root λ_-. With λ_- = −β < 0 and X_t ≥ 0 on the event {�
 
 Applying optional stopping at τ on the event {τ < ∞}: at first passage, X_τ = 0, so
 
-$$M_\tau = \exp(\lambda_- \cdot 0 - r\tau) = \exp(-r\tau). \tag{A.9}$$
+```math
+M_\tau = \exp(\lambda_- \cdot 0 - r\tau) = \exp(-r\tau). \qquad \text{(A.9)}
+```
 
 Taking expectations and equating to M_0 = exp(λ_- X_0):
 
-$$E^Q\!\left[e^{-r\tau}\, \mathbf{1}_{\{\tau < \infty\}}\right] = \exp(\lambda_- X_0) = \exp(-\beta X_0). \tag{A.10}$$
+```math
+E^Q\!\left[e^{-r\tau}\, \mathbf{1}_{\{\tau < \infty\}}\right] = \exp(\lambda_- X_0) = \exp(-\beta X_0). \qquad \text{(A.10)}
+```
 
 Substituting X_0 = ln(V_0/V_B) yields the closed-form breach factor
 
-$$E^Q\!\left[e^{-r\tau}\, \mathbf{1}_{\{\tau < \infty\}}\right] = (V_B/V_0)^{\beta}. \tag{A.11}$$
+```math
+E^Q\!\left[e^{-r\tau}\, \mathbf{1}_{\{\tau < \infty\}}\right] = (V_B/V_0)^{\beta}. \qquad \text{(A.11)}
+```
 
 Equation (A.11) is §3.3 eq. (3.6). For r > 0 the indicator is inert: on the τ = ∞ event the discount factor exp(−rτ) is zero, so (A.11) may be read as E^Q[exp(−rτ)]. This breach factor is the load-bearing structural object of the price equation in §3.5: it integrates the entire infinite future of coverage-breach risk into a single scalar.
 
@@ -527,7 +579,9 @@ Equation (A.11) is §3.3 eq. (3.6). For r > 0 the indicator is inert: on the τ 
 
 For the DCB construction in §3.6, the relevant object is the first-passage distribution Pr(τ ≤ T) under the physical measure (ν = μ, v = μ − σ²/2). The standard closed-form result for first-passage of drifted Brownian motion is
 
-$$\Pr(\tau \le T) = \Phi\!\left(\frac{-X_0 - vT}{\sigma\sqrt{T}}\right) + \exp\!\left(-\frac{2vX_0}{\sigma^2}\right)\Phi\!\left(\frac{-X_0 + vT}{\sigma\sqrt{T}}\right), \tag{A.12}$$
+```math
+\Pr(\tau \le T) = \Phi\!\left(\frac{-X_0 - vT}{\sigma\sqrt{T}}\right) + \exp\!\left(-\frac{2vX_0}{\sigma^2}\right)\Phi\!\left(\frac{-X_0 + vT}{\sigma\sqrt{T}}\right), \qquad \text{(A.12)}
+```
 
 where Φ is the standard normal cdf.
 
@@ -539,11 +593,15 @@ The first term in (A.12) is the probability that the terminal value X_T lies bel
 
 Setting v = 0 in (A.12) suppresses both the asset drift and the Itô correction. The exponential weight collapses to one and the two Φ terms coincide, giving
 
-$$\Pr(\tau \le T)\big|_{v = 0} = 2\, \Phi\!\left(\frac{-X_0}{\sigma\sqrt{T}}\right). \tag{A.13}$$
+```math
+\Pr(\tau \le T)\big|_{v = 0} = 2\, \Phi\!\left(\frac{-X_0}{\sigma\sqrt{T}}\right). \qquad \text{(A.13)}
+```
 
 Substituting X_0 = ln(BCY_0) and recognizing the DCB construction from §3.6 eq. (3.9),
 
-$$\Pr(\tau \le T)\big|_{v = 0} = 2\, \Phi(-\mathrm{DCB}). \tag{A.14}$$
+```math
+\Pr(\tau \le T)\big|_{v = 0} = 2\, \Phi(-\mathrm{DCB}). \qquad \text{(A.14)}
+```
 
 The 2Φ(−DCB) form in (A.14) is a structural property of the drift-suppressed first-passage distribution, not a default-probability claim. The drift suppression is a deliberate simplification per §3.6: the physical-measure drift μ is among the most contested inputs for Bitcoin reserves, and the drift-suppressed form is more institutionally defensible. As §3.6 establishes, DCB is a vol-scaled log-distance from the current reserve to the coverage barrier. Equation (A.14) formalizes the structural connection between DCB and the first-passage object underpinning it without committing to a default-probability interpretation of the metric.
 
@@ -555,11 +613,15 @@ This appendix derives the closed-form price equation P_0 = (c/r)·[1 − (V_B/V_
 
 Under the risk-neutral measure Q, the asset process is geometric Brownian motion with drift r (Assumption 1 of §3.1) and no continuous reserve yield (Assumption 2):
 
-$$dV_t = r V_t\, dt + \sigma V_t\, dW_t^Q. \tag{B.1}$$
+```math
+dV_t = r V_t\, dt + \sigma V_t\, dW_t^Q. \qquad \text{(B.1)}
+```
 
 Let F(V) denote the time-homogeneous value of the instrument at reserve level V, paying continuous dividend flow C while V > V_B. By no-arbitrage, the discounted gain process e^(−rt)F(V_t) + ∫₀ᵗ e^(−rs) C ds is a martingale under Q. Applying Itô's formula to the gain process and equating its drift to zero gives the perpetual-claim ODE,
 
-$$\tfrac{1}{2}\sigma^2 V^2 F''(V) + r V F'(V) - r F(V) + C = 0. \tag{B.2}$$
+```math
+\tfrac{1}{2}\sigma^2 V^2 F''(V) + r V F'(V) - r F(V) + C = 0. \qquad \text{(B.2)}
+```
 
 This is the time-homogeneous equation introduced in §3.2 and corresponds to Black and Cox (1976) eq. (13). The time-homogeneity of the instrument eliminates any explicit time dependence. The result is an ODE in V rather than a PDE.
 
@@ -567,21 +629,29 @@ This is the time-homogeneous equation introduced in §3.2 and corresponds to Bla
 
 The homogeneous equation associated with (B.2) is
 
-$$\tfrac{1}{2}\sigma^2 V^2 F''(V) + r V F'(V) - r F(V) = 0. \tag{B.3}$$
+```math
+\tfrac{1}{2}\sigma^2 V^2 F''(V) + r V F'(V) - r F(V) = 0. \qquad \text{(B.3)}
+```
 
 A power-function ansatz F = V^a substituted into (B.3) reduces to the indicial equation
 
-$$\sigma^2 a^2 + (2r - \sigma^2) a - 2r = 0. \tag{B.4}$$
+```math
+\sigma^2 a^2 + (2r - \sigma^2) a - 2r = 0. \qquad \text{(B.4)}
+```
 
 The discriminant of (B.4) simplifies to (2r + σ²)², and the two roots are
 
-$$a_+ = 1, \qquad a_- = -\frac{2r}{\sigma^2} = -\beta, \tag{B.5}$$
+```math
+a_+ = 1, \qquad a_- = -\frac{2r}{\sigma^2} = -\beta, \qquad \text{(B.5)}
+```
 
 with β = 2r/σ² as defined in §3.3 eq. (3.5). The negative root −β coincides with the exponent in the Laplace transform derived in §A.2 eq. (A.8). The exponent of the breach factor and the homogeneous-solution exponent are the same object, both encoding first-passage of GBM to V_B under the risk-neutral measure.
 
 A particular solution to the inhomogeneous equation (B.2) is the constant F_p = C/r, verified by direct substitution: F_p' = F_p'' = 0 reduces (B.2) to −r·(C/r) + C = 0. The general solution is the particular plus the homogeneous combination,
 
-$$F(V) = \frac{C}{r} + A_1 V + A_2 V^{-\beta}, \tag{B.6}$$
+```math
+F(V) = \frac{C}{r} + A_1 V + A_2 V^{-\beta}, \qquad \text{(B.6)}
+```
 
 where A_1 and A_2 are constants to be determined by boundary conditions. This is the general-solution form referenced in §3.2 and Black and Cox (1976) eq. (14).
 
@@ -589,23 +659,33 @@ where A_1 and A_2 are constants to be determined by boundary conditions. This is
 
 The two boundary conditions of the present setup are stated in §3.2:
 
-$$F(V) \to \frac{C}{r} \text{ as } V \to \infty, \qquad F(V_B) = R. \tag{B.7}$$
+```math
+F(V) \to \frac{C}{r} \text{ as } V \to \infty, \qquad F(V_B) = R. \qquad \text{(B.7)}
+```
 
 The asymptotic condition determines A_1. As V → ∞, the term A_2 V^(−β) → 0 since β > 0, and the constant C/r is bounded, so the leading-order behavior is governed by A_1 V. Requiring F(V) → C/r forces
 
-$$A_1 = 0. \tag{B.8}$$
+```math
+A_1 = 0. \qquad \text{(B.8)}
+```
 
 The coverage-barrier condition then determines A_2. With A_1 = 0,
 
-$$F(V_B) = \frac{C}{r} + A_2 V_B^{-\beta} = R, \tag{B.9}$$
+```math
+F(V_B) = \frac{C}{r} + A_2 V_B^{-\beta} = R, \qquad \text{(B.9)}
+```
 
 solved for A_2 by
 
-$$A_2 = \left(R - \frac{C}{r}\right) V_B^{\beta}. \tag{B.10}$$
+```math
+A_2 = \left(R - \frac{C}{r}\right) V_B^{\beta}. \qquad \text{(B.10)}
+```
 
 Substituting (B.8) and (B.10) into the general solution (B.6) and simplifying yields the closed-form price,
 
-$$F(V_0) = \frac{C}{r}\!\left[1 - (V_B/V_0)^{\beta}\right] + R\,(V_B/V_0)^{\beta}, \tag{B.11}$$
+```math
+F(V_0) = \frac{C}{r}\!\left[1 - (V_B/V_0)^{\beta}\right] + R\,(V_B/V_0)^{\beta}, \qquad \text{(B.11)}
+```
 
 which, with quantities per $100 of face value so that C = c, is §3.5 eq. (3.7). The structural reading of the closed form is a risk-neutral expected dividend-stream value plus a risk-neutral expected recovery, the dividend term weighted by one minus the breach factor (V_B/V_0)^β derived in §A.2 eq. (A.11), the recovery term weighted by the breach factor itself.
 
@@ -615,25 +695,33 @@ The four boundary cases referenced in §3.5 and anchored numerically in §4.6 fo
 
 Deep coverage (BCY → ∞). As V_0 → ∞ with V_B fixed, (V_B/V_0)^β → 0. The recovery term vanishes and the perpetuity-term coefficient approaches one:
 
-$$F(V_0) \to \frac{C}{r}. \tag{B.12}$$
+```math
+F(V_0) \to \frac{C}{r}. \qquad \text{(B.12)}
+```
 
 The deep-coverage limit recovers the risk-free perpetuity asymptote.
 
 Coverage barrier (BCY = 1). At V_0 = V_B, (V_B/V_0)^β = 1. The perpetuity term vanishes and the recovery term equals R:
 
-$$F(V_B) = R = (1-\alpha) V_B. \tag{B.13}$$
+```math
+F(V_B) = R = (1-\alpha) V_B. \qquad \text{(B.13)}
+```
 
 At the coverage barrier, the closed-form price collapses to the recovery assumption alone, independent of σ and r. This is the degenerate-point property of §3.5: the model adds informational content above the coverage barrier. At the coverage barrier, it returns only what was assumed about recovery.
 
 Low volatility (σ → 0). As σ → 0, β = 2r/σ² → ∞ and (V_B/V_0)^β → 0 for any V_0 > V_B. The closed form approaches the deterministic perpetuity:
 
-$$F(V_0) \to \frac{C}{r}. \tag{B.14}$$
+```math
+F(V_0) \to \frac{C}{r}. \qquad \text{(B.14)}
+```
 
 The deterministic limit admits no breach above the starting BCY.
 
 High volatility (σ → ∞). As σ → ∞, β → 0 and (V_B/V_0)^β → 1 for any V_0. The closed form collapses to recovery at every BCY:
 
-$$F(V_0) \to R. \tag{B.15}$$
+```math
+F(V_0) \to R. \qquad \text{(B.15)}
+```
 
 The high-volatility limit makes coverage breach almost sure. The property is not confined to the limit. Under the modeled risk-neutral process, eventual breach has probability one whenever σ² > 2r (σ > 29.7% at the base-case r). Finite-horizon breach risk is read through DCB and the Appendix C probabilities, not through the eventual-hitting property.
 
@@ -716,15 +804,21 @@ The validity domain is V_0 ≥ V_B, equivalently BCY_0 ≥ 1 at the one-forward-
 
 The closed-form price, identical to §3.5 eq. (3.7), restated with β from §3.3 eq. (3.5) and R from §3.1 eq. (3.4):
 
-$$P_0 = \frac{c}{r}\left[1 - (V_B/V_0)^{\beta}\right] + R\,(V_B/V_0)^{\beta}, \qquad \beta = 2r/\sigma^2, \qquad R = (1-\alpha)\,V_B. \tag{D.1}$$
+```math
+P_0 = \frac{c}{r}\left[1 - (V_B/V_0)^{\beta}\right] + R\,(V_B/V_0)^{\beta}, \qquad \beta = 2r/\sigma^2, \qquad R = (1-\alpha)\,V_B. \qquad \text{(D.1)}
+```
 
 Equivalently in coverage terms, V_B/V_0 = 1/BCY_0 at the κ = 1 convention. Distance-to-Coverage-Breach, identical to §3.6 eq. (3.9):
 
-$$\mathrm{DCB} = \frac{\ln(\mathrm{BCY}_0)}{\sigma\sqrt{T}}. \tag{D.2}$$
+```math
+\mathrm{DCB} = \frac{\ln(\mathrm{BCY}_0)}{\sigma\sqrt{T}}. \qquad \text{(D.2)}
+```
 
 The drift-free breach probability, identical to §A.4 eq. (A.14):
 
-$$\Pr(\tau \le T)\big|_{v=0} = 2\,\Phi(-\mathrm{DCB}). \tag{D.3}$$
+```math
+\Pr(\tau \le T)\big|_{v=0} = 2\,\Phi(-\mathrm{DCB}). \qquad \text{(D.3)}
+```
 
 ### D.4 Reference implementation
 
